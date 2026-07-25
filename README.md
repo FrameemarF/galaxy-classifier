@@ -1,0 +1,1 @@
+ML project. Goal - model that can recognize types of galaxies from photo
