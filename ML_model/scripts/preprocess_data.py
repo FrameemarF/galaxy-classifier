@@ -4,10 +4,10 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
-import config
+import ML_model.config as config
 import numpy as np
 import h5py
-from src.transforms import resize_image
+from ML_model.src.transforms import resize_image
 
 with h5py.File(config.RAW_H5_PATH, 'r') as src:
     images = src['images'][:]
