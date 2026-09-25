@@ -11,3 +11,4 @@ python-dotenv
 httpx
 torch
 psycopg2
+python-multipart

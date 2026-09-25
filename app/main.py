@@ -1,5 +1,14 @@
 from fastapi import FastAPI
+from app.routers.predictions import router
+from contextlib import asynccontextmanager
+from app.services.ml_service import load_model
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.model = load_model()
+    yield
+    pass
 
-app.include_router()
+app = FastAPI(lifespan=lifespan)
+
+app.include_router(router)
