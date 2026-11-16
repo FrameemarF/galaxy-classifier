@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers.predictions import router
+from app.routers import predictions, auth
 from contextlib import asynccontextmanager
 from app.services.ml_service import load_model
 
@@ -19,4 +19,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router)
+app.include_router(predictions.router)
+app.include_router(auth.router)
