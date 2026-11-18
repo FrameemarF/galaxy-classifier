@@ -1,6 +1,7 @@
+from sqlalchemy import select
+
 from app.database.database import Session, engine
 from app.models.galaxy_class import GalaxyClassDB
-from sqlalchemy import select
 
 GALAXIES = [{
         "model_index": 0,

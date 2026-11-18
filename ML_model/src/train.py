@@ -1,7 +1,8 @@
 import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader
+from torch import nn
 from torch.optim import Optimizer
+from torch.utils.data import DataLoader
+
 
 def train_one_epoch(model: nn.Module, loader: DataLoader, optimizer: Optimizer, criterion: nn.Module) -> tuple[float, float]:
     model.train()

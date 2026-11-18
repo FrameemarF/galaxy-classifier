@@ -1,9 +1,13 @@
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+import enum
+from datetime import datetime
+
 from sqlalchemy import Enum, func
 from sqlalchemy.dialects.postgresql import TIMESTAMP
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.database.database import Base
-from datetime import datetime
-import enum
+from app.models.prediction import PredictionDB
+
 
 class UserRole(enum.Enum):
     user = "user"

@@ -1,8 +1,9 @@
+from datetime import datetime, timedelta, timezone
+
 import argon2
 import jwt
-from datetime import datetime, timezone, timedelta
+
 from app.core.config import settings
-from fastapi.exceptions import HTTPException
 
 hasher = argon2.PasswordHasher()
 

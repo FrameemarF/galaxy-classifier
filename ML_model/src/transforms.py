@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import torch
 
+
 # для обучения модели
 def resize_image(img_array, target_size=(64, 64)):
     return cv2.resize(img_array, target_size, interpolation=cv2.INTER_LANCZOS4)

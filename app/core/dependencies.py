@@ -1,9 +1,10 @@
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
+
 from app.core.security import decode_access_token
-from app.models.user import UserDB
-from app.database.database import get_session, Session
 from app.database.crud import get_user_by_id
+from app.database.database import Session, get_session
+from app.models.user import UserDB
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 

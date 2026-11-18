@@ -1,22 +1,24 @@
-import cv2
-import numpy as np
 import os
 import uuid
-import app.database.crud as crud
-from pathlib import Path
-from fastapi import APIRouter, File, UploadFile, HTTPException, Depends, Request, Query
 from io import BytesIO
-from PIL import Image, UnidentifiedImageError
-from ML_model.src.transforms import preprocess_image_api
-from ML_model.src.model import SimpleGalaxyCNN
+from pathlib import Path
+
+import cv2
+import numpy as np
 from dotenv import load_dotenv
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile
+from PIL import Image, UnidentifiedImageError
 from sqlalchemy.orm import Session
-from app.database.database import get_session
+
+from app.core.dependencies import get_current_user, get_optional_user
+from app.database import crud
 from app.database.crud import get_predictions_by_user
+from app.database.database import get_session
 from app.models.user import UserDB
-from app.services.ml_service import predict
-from app.core.dependencies import get_optional_user, get_current_user
 from app.schemas.prediction import Prediction
+from app.services.ml_service import predict
+from ML_model.src.model import SimpleGalaxyCNN
+from ML_model.src.transforms import preprocess_image_api
 
 load_dotenv()
 router = APIRouter(prefix="/predictions")

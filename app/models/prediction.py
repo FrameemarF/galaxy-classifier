@@ -1,7 +1,11 @@
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import func, DateTime, ForeignKey
-from app.database.database import Base
 from datetime import datetime
+
+from sqlalchemy import DateTime, ForeignKey, func
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from app.database.database import Base
+from app.models.galaxy_class import GalaxyClassDB
+from app.models.user import UserDB
 
 
 class PredictionDB(Base):

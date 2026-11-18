@@ -4,12 +4,12 @@ from pathlib import Path
 project_root = Path.cwd().parent
 sys.path.append(str(project_root))
 
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
-import torch
+import json
+
 import h5py
 import numpy as np
-import json
+import torch
+from torch.utils.data import DataLoader, Dataset
 
 
 class GalaxyDataset(Dataset):

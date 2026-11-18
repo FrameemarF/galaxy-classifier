@@ -1,12 +1,14 @@
-from app.models.galaxy_class import GalaxyClassDB
-from app.models.prediction import PredictionDB
-from app.models.user import UserDB
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.models.galaxy_class import GalaxyClassDB
+from app.models.prediction import PredictionDB
+from app.models.user import UserDB
+
+
 def take_galaxy_entry(session: Session, model_index: int) -> GalaxyClassDB:
     """
-    Функция для получения id типа галактики по индексу от модели
+    Возвращает запись о типе галактики из БД по её индексу в ML-модели.
     """
     query = select(GalaxyClassDB).where(GalaxyClassDB.model_index == model_index)
     result = session.scalar(query)
@@ -14,7 +16,7 @@ def take_galaxy_entry(session: Session, model_index: int) -> GalaxyClassDB:
 
 def create_prediction_entry(session: Session, galaxy_id: int, confidence: float, image_path: str, user_id: int = None):
     """
-    Функция для создания записи предсказания в БД
+    Записывает предсказание в БД
     """
     new_prediction = PredictionDB(galaxy_class_id=galaxy_id, confidence=confidence, image_path=image_path, user_id=user_id)
     session.add(new_prediction)

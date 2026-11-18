@@ -1,6 +1,8 @@
-from ML_model.src.model import SimpleGalaxyCNN
-from ML_model import config as ml_config
 import torch
+
+from ML_model import config as ml_config
+from ML_model.src.model import SimpleGalaxyCNN
+
 
 def load_model():
     model = SimpleGalaxyCNN()
